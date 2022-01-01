@@ -3,14 +3,14 @@
 		<div id = "container">
 			<div id = "shitpost"></div>
 			
-			<button id = "generateShitpostBtn">
-				Generate new shitpost
-			</button>
-			<br>
 			<input type="text" value="Hello World" id="toCopy">
 
 			<div id="buttons">
-				<a id = "leTweet" class="button" target = "_blank">Tweet</a>
+    			<button id = "generateShitpostBtn">
+    				Generate new shitpost
+    			</button>
+    			<br>
+				<button id="leTweet" class="button" onclick="window.open(tweetUrl, '_blank').focus();">Tweet</a>
 	        	<button class="right button" onclick="copyToClipboard()">Copy to clipboard</button>
 	        	<br>
 	        	<button class="button" id="copyAsImage" onclick="copyAsPng(document.querySelector('#shitpost'))">Copy as image</button>
@@ -43,6 +43,7 @@
         document.querySelector("#generateShitpostBtn").onclick = generateShitpost;
 
         var imageName = "";
+        var tweetUrl = "";
 
         try{
             ClipboardItem;
@@ -92,7 +93,7 @@
         	}
 
         	document.querySelector("#shitpost").innerHTML = currentShitpost;
-        	document.querySelector("#leTweet").href = "https://twitter.com/intent/tweet?text=" + currentShitpost;
+        	tweetUrl = "https://twitter.com/intent/tweet?text=" + currentShitpost;
 
 			document.getElementById("toCopy").value = currentShitpost;
 
@@ -154,24 +155,19 @@
 		#buttons{
 			text-align: left;
 			display: inline-block;
-			min-width: 700px;
-			margin-left: 32px;
 		}
 
 		.right{
 			float: right;
-			margin-right: 32px;
 		}
 
-		a#leTweet{
+		#leTweet{
     		color: blue;
 		}
 
 		.button {
 			margin-top: 35px;
 			font-size: 40px;
-			background-color: #efefef;
-			border: 1px solid rgb(118 118 118);
 			padding: 10px;
 			text-decoration: none;
 			display: inline-block;
